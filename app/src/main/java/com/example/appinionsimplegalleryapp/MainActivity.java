@@ -25,7 +25,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 @AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
     private GalleryAdapter adapter;
-    ActivityMainBinding binding;
+    private ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<PhotoGalleryResponse> photoGalleryResponse) {
                 if (photoGalleryResponse != null){
-                    adapter.setListDataItems(photoGalleryResponse);
+                    adapter.setListDataItems(photoGalleryResponse, MainActivity.this);
                     adapter.notifyDataSetChanged();
                     binding.simpleProgressBar.setVisibility(View.GONE);
                     binding.recyclerView.setVisibility(View.VISIBLE);
